@@ -1,0 +1,59 @@
+<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">ol{margin:0;padding:0}table td,table th{padding:0}.c3{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c7{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:20pt;font-family:"Arial";font-style:normal}.c0{orphans:2;widows:2;height:11pt}.c4{background-color:#ffffff;max-width:468pt;padding:72pt 72pt 72pt 72pt}.c5{color:#1155cc;text-decoration:underline}.c1{orphans:2;widows:2}.c8{color:inherit;text-decoration:inherit}.c9{text-indent:36pt}.c6{margin-left:108pt}.c2{page-break-after:avoid}.c10{margin-left:36pt}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style>
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+
+
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">React Native InstaClone</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="HowTo.html">React Native</a></li>
+            <li ><a href="HowTo2.html">ListView</a></li>
+            <li class="active"><a href="HowTo3.html">CameraView</a></li>
+            <li><a href="HowTo4.html">Gl-React-Native</a></li>
+            <li><a href="HowTo5.html">Cloudinary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class = 'container-fluid' style="margin-top:100px;"><div class= 'row'><div class='col-xs-8 col-xs-offset-2'>
+<h1 class="c1 c2" id="h.911w27b9k9jl"><span class="c7">Using CameraView to Take a Photo</span></h1><p class="c0"><span class="c3"></span></p><p class="c1"><span>Now that we have our navigation and gallery set up, we can expand our reach a little and use an external library called React-Native-Camera. &nbsp;You can get set up with installation </span><span class="c5"><a class="c8" href="https://www.google.com/url?q=https://github.com/lwansbrough/react-native-camera&amp;sa=D&amp;ust=1470383542194000&amp;usg=AFQjCNECDV_3FEY1bBuIv5RfOuC5-L_Ydg">through their guide</a></span><span class="c3">. &nbsp;</span></p><p class="c1"><span class="c3">Once you have React-Native-Camera installed, you&#39;re ready to use your Android&#39;s camera to take pictures! &nbsp;The easiest way to start using React-Native-Camera, is to create a new class and include the &lt;Camera&gt; element within its rendered view. &nbsp;Here is how I set mine up:</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3"><pre><code></span></p><p class="c1"><span class="c3">&nbsp; &nbsp;&lt;View style ={{flex: 1}}&gt;</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &lt;View style ={{flex: 1}}&gt;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Toolbar title={&#39;Upload a Photo&#39;} icon={&#39;arrow-back&#39;} onIconPress={this.props.onBack} /&gt;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &lt;/View&gt;</span></p><p class="c1"><span class="c3">&nbsp; </span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &lt;Camera</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style = {{flex: 10}}</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; ref={(cam) =&gt; {</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; this.camera = cam;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; }}</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; aspect={Camera.constants.Aspect.fill}</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; captureTarget ={Camera.constants.CaptureTarget.temp}</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; captureQuality = {Camera.constants.CaptureQuality.low}&gt;</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; &lt;View style={{flex:5}}/&gt;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; &lt;Button style={{flex:1}} text=&#39;Take Picture and Upload&#39; value = &quot;NORMAL RAISED&quot; raised={true} onPress={this.takePicture.bind(this)}&gt;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Button&gt;</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &lt;/Camera&gt;</span></p><p class="c1"><span class="c3">&nbsp; &nbsp; &nbsp; &lt;/View&gt;</span></p><p class="c1"><span class="c3"></pre></code></span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">As you can see, I kept the normal Toolbar at the top, for consistency. &nbsp;Below that you can see the Camera element which has the ref function, which just sets the scope of the camera. &nbsp;Next is the aspect which sets the aspect ratio that the camera will use (fill just uses the camera&#39;s native aspect ratio and stretches our View to fit that. &nbsp;CaptureTarget sets where the image will be stored (temp allows us to store the image in the app&#39;s cache so that it both easily accessible and ephemeral). &nbsp;CaptureQuality lets us set the quality of the image being taken (for testing and because these images will eventually be uploaded to a server, I have set this to low).</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">Below the &lt;Camera&gt; element there is a &lt;Button&gt; element which is imported from &#39;react-native-material-design&#39;. &nbsp;As you would expect, the onPress attribute is set to bind the takePicture function to this scope. &nbsp;This just makes the button fire our takePicture function.</span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">The takePicture function is super simple:</span></p><p class="c1"><span class="c3"><pre><code> &nbsp;takePicture() {</span></p><p class="c1 c9"><span class="c3">this.camera.capture()</span></p><p class="c1 c9 c10"><span class="c3">.then(function(data){</span></p><p class="c1 c6"><span class="c3">//Here data.path is the location of the image. &nbsp;In the &#39;Uploading Images&#39;, section I use this path to POST the image to a web server. &nbsp;This POSTing can be done here or the path can just be saved for later use</span></p><p class="c1 c6"><span class="c3">}</span></p><p class="c1 c6"><span class="c3">.catch(err =&gt; console.error(err)); //any problem with the camera will be caught here</span></p><p class="c1"><span class="c3">}</pre></code></span></p><p class="c0"><span class="c3"></span></p><p class="c0"><span class="c3"></span></p><p class="c1"><span class="c3">Great! Now you can take a picture and you get its path on the phone. &nbsp;Let&#39;s move on to adding filters to that image!</span></p><p class="c0"><span class="c3"></span></p><p class="c0"><span class="c3"></span></p>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="HowTo2.html" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class=" page-item"><a class="page-link" href="HowTo.html">1</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo2.html">2</a></li>
+    <li class=" active page-item"><a class="page-link" href="HowTo3.html">3</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo4.html">4</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo5.html">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="HowTo4.html" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+</body></html>

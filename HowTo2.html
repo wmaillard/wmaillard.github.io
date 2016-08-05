@@ -1,0 +1,63 @@
+<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">ol{margin:0;padding:0}table td,table th{padding:0}.c6{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:20pt;font-family:"Arial";font-style:normal}.c0{color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:"Arial";font-style:normal}.c8{background-color:#ffffff;max-width:468pt;padding:72pt 72pt 72pt 72pt}.c1{orphans:2;widows:2;height:11pt}.c2{orphans:2;widows:2}.c4{color:#1155cc;text-decoration:underline}.c5{color:inherit;text-decoration:inherit}.c3{margin-left:36pt}.c7{page-break-after:avoid}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style>
+
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+
+
+
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">React Native InstaClone</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="HowTo.html">React Native</a></li>
+            <li class="active"><a href="HowTo2.html">ListView</a></li>
+            <li><a href="HowTo3.html">CameraView</a></li>
+            <li><a href="HowTo4.html">Gl-React-Native</a></li>
+            <li><a href="HowTo5.html">Cloudinary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class = 'container-fluid' style="margin-top:100px;"><div class= 'row'><div class='col-xs-8 col-xs-offset-2'>
+    <h1 class="c2 c7" id="h.e4m2442ixkp"><span class="c6">Using Listview to Display Images</span></h1><p class="c2"><span class="c0">Our next challenge will be setting up React Native&#39;s built in &lt;ListView&gt; element to to display images. &nbsp;This may seem counterintuitive because we don&#39;t have any way to take images yet, but I think it is better to set up your &lt;ListView&gt; first, so that you can view your images while you testing your camera and filter functions so that you are not working in the dark.</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">ListView is a basic element of React Native, but the documentation is severely lacking, so I will do my best to explain how to set it up and what everything does.</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">You will need to start by including ListView:</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0"><pre><code>import { ListView } from &#39;react-native&#39;</pre></code></span></p><p class="c2"><span class="c0">Next, within your class&#39; render function, &nbsp;add the following: </span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0"><pre><code>const ds = new ListView.DataSource({rowHasChanged: (r1, r2) =&gt; r1 !== r2}})
+     this.state = {
+     dataSource: ds.cloneWithRows(urls); };</span></p><p class="c2"><span class="c0"></pre></code></span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span>This initialization comes from </span><span class="c4"><a class="c5" href="https://www.google.com/url?q=https://facebook.github.io/react-native/docs/using-a-listview.html&amp;sa=D&amp;ust=1470382397773000&amp;usg=AFQjCNFH0Auacavt-ABZmczlKxfrkWDGTQ">the documentation</a></span><span class="c0">, except that we have passed a simple array of urls. &nbsp;Each url points to an image of the same size (500px x 500px) to keep the display simple (if you try to render images of strange sizes that don&#39;t fit in an &lt;Image&gt; element then you will run into problems).</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">The rowHasChanged function tells the ListView to rerender a row if it has changed. &nbsp;The documentation is very vague but I believe that r1 is the old row, r2 is the new row and if they are not the same, then that row is rerendered.</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">Next, you can create a ListView within your View that displays all of the images linked to in the url array.</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">Here is a complete View that can be returned to render both the navigation bar form React Material Design and from the ListView:</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0"></span></p>
+     <pre><code>
+
+     <p class="c2"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;View style ={{flex: 1}}&gt;</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;View style ={{flex: 1}}&gt;</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Toolbar title={&#39;Gallery&#39;} icon={&#39;arrow-back&#39;} onIconPress={this.props.onBack} /&gt;</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/View&gt;</span></p><p class="c1 c3"><span class="c0"></span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;ListView contentContainerStyle = {{justifyContent: &#39;center&#39;, alignItems: &#39;center&#39;}}</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; style={{backgroundColor: &#39;powderblue&#39;, &nbsp;flex: 10, flexWrap: &#39;wrap&#39;}}</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dataSource={this.state.dataSource}</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; renderRow={(rowData) =&gt; {</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &lt;Image style= {styles.image} source={{uri: rowData}}/&gt;</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /&gt;</span></p><p class="c2 c3"><span class="c0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/View&gt;</span></p><p class="c2"><span class="c0"></pre></code></span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">The ListView element is what we just created. &nbsp;The contentContainerStyle and the style just ensure that everything is centered, positioned correctly, and has the correct background. &nbsp;The dataSource is array of urls (which was converted into a dataSource) and the dataSource passes rowData to render row which returns an Image element with a source uri for each uri in the array.</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">The great part about ListView, is that it only renders elements once they are in view. &nbsp;That means that our users do not need to load every item in our list unless they scroll all the way through!</span></p><p class="c1"><span class="c0"></span></p><p class="c2"><span class="c0">Here is an example of the gallery:</span></p><p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 229.59px; height: 408.50px;"><img alt="" src="images2/image00.png" style="width: 229.59px; height: 408.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p><p class="c1"><span class="c0"></span></p>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="HowTo1.html" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class=" page-item"><a class="page-link" href="HowTo.html">1</a></li>
+    <li class="active page-item"><a class="page-link" href="HowTo2.html">2</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo3.html">3</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo4.html">4</a></li>
+    <li class="page-item"><a class="page-link" href="HowTo5.html">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="HowTo3.html" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+     </body></html>
